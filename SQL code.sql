@@ -1,8 +1,8 @@
-Create Database midias;
+Create Database Midias;
 
-Use midias;
+Use Midia;
 
-Create Table midia (
+Create Table Midia (
 id int AUTO_INCREMENT PRIMARY KEY,
 nome varchar(100),
 tipo varchar(100),

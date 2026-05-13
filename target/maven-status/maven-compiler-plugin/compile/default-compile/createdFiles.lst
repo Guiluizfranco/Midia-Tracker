@@ -1,1 +1,4 @@
 com/mycompany/midia/tracker/MidiaTracker.class
+com/mycompany/midia/tracker/Service.class
+com/mycompany/midia/tracker/Conexão_BancoDados.class
+com/mycompany/midia/tracker/Model.class

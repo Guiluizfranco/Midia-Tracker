@@ -5,9 +5,13 @@ import java.util.Scanner;
 public class MidiaTracker {
 
     public static void main(String[] args) {
-        
+
         Scanner sc = new Scanner(System.in);
         boolean loopMenu = true;
+        Service service = new Service();
+        
+        Conexão_BancoDados conn = new Conexão_BancoDados();
+        conn.Connection(); //testar conexão
         
         System.out.println("\n-----Bem vindo-----");
         
@@ -51,13 +55,17 @@ public class MidiaTracker {
                     System.out.println("\nDigite um comentário:");
                     String ComentarioMidia = sc.nextLine();
                     
+                    service.SalvarObjeto(NomeMidia, TipoMidia, GeneroMidia, AnoMidia, StatusMidia, NotaMidia, ComentarioMidia);
+                    
+                    service.CadastrarMidia();
+                    
                     System.out.println("\nDeseja continuar cadastrando?");
                     String optionYN = sc.nextLine().toLowerCase();
-                    
+
                     if(optionYN.equals("não")){
                         loopRegister = false;
                     }
-                    
+   
                     }catch(NumberFormatException e){
                        System.out.println("Insira um valor válido");         
                     }

@@ -1,13 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.midia.tracker;
 
-/**
- *
- * @author guil_dev
- */
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.DriverManager;
+
 public class Conexão_BancoDados {
+    
+    public Connection Connection(){
+      
+      String url = "jdbc:mysql://localhost:3306/Midias";
+      String usuario = "root";
+      String senha = "SUA SENHA";
+      
+      Connection conn = null;
+      
+        try{
+    
+        conn = DriverManager.getConnection(url, usuario, senha);
+        
+        System.out.println("Conexão realizada com sucesso");
+        
+         }catch(SQLException e){
+          
+              System.out.println("Falha na conexão com banco dados"+ e.getMessage());
+         } 
+      
+        return conn;
+    }
     
 }
