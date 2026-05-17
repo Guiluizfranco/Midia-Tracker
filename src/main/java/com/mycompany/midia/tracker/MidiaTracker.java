@@ -18,13 +18,14 @@ public class MidiaTracker {
         while(loopMenu){
         
         System.out.println("\nDigite a opção que deseja:");
-        System.out.println("\n| Cadastrar | Excluir | Listar | Sair |");
+        System.out.println("\n| Cadastrar | Excluir | Listar | Buscar | Sair |");
         String optionMenu = sc.nextLine().toLowerCase();
         
         switch(optionMenu){
             
             case "cadastrar":
                 
+                boolean loopOptionYN_Cadastrar = true;
                 boolean loopRegister = true;
                 
                 while(loopRegister){
@@ -57,17 +58,33 @@ public class MidiaTracker {
                     
                     service.SalvarObjeto(NomeMidia, TipoMidia, GeneroMidia, AnoMidia, StatusMidia, NotaMidia, ComentarioMidia);
                     
-                    service.CadastrarMidia();
-                    
-                    System.out.println("\nDeseja continuar cadastrando?");
-                    String optionYN = sc.nextLine().toLowerCase();
+                    System.out.println(service.CadastrarMidia(TipoMidia));
+                   
+                    while(loopOptionYN_Cadastrar){
+                      
+                      System.out.println("\nDeseja continuar cadastrando?");
+                      String optionYN = sc.nextLine().toLowerCase();
 
-                    if(optionYN.equals("não")){
-                        loopRegister = false;
+                      if(optionYN.equals("não")){
+                        
+                          loopRegister = false;
+                          loopOptionYN_Cadastrar = false;
+                    
+                      }else if(optionYN.equals("sim")){
+                        
+                        loopOptionYN_Cadastrar = false;
+                        
+                      }else{
+                         
+                          System.out.println("Digita uma opção válida");
+                          
+                      }
+                      
                     }
    
                     }catch(NumberFormatException e){
-                       System.out.println("Insira um valor válido");         
+                       System.out.println("Digite um valor válido");         
+                    
                     }
                     
                 }
@@ -75,16 +92,57 @@ public class MidiaTracker {
                 break;
             
             case "excluir":
+               
+               boolean loopExcluir = true;
+               boolean loopOptionYN_Excluir = true;
                 
-                System.out.println("2");
+               while(loopExcluir){
+                   
+                   System.out.println("Digite a midia que deseja excluir:");
+                
+                   String NomeExclusão = sc.nextLine();
+                
+                   System.out.println(service.ExcluirMidia(NomeExclusão));
+                   
+                   while(loopOptionYN_Excluir){
+                      
+                      System.out.println("\nDeseja continuar excluindo?");
+                      String optionYN = sc.nextLine().toLowerCase();
+
+                      if(optionYN.equals("não")){
+                        
+                          loopExcluir = false;
+                          loopOptionYN_Excluir = false;
+                    
+                      }else if(optionYN.equals("sim")){
+                        
+                        loopOptionYN_Excluir = false;
+                        
+                      }else{
+                         
+                          System.out.println("Digita uma opção válida");
+                          
+                      }
+                      
+                    }
+                   
+               } 
+                
                 
                 break;
             
             case "listar":
                 
-                System.out.println("3");
+                System.out.println("Funcionalidade em andamento");
                 
                 break;
+                
+            case "buscar":
+                
+                System.out.println("Digite o nome da midia que deseja buscar: ");
+                String NomeBuscar = sc.nextLine();
+                
+                
                 
             case "sair":
                 
